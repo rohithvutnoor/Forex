@@ -1,0 +1,190 @@
+/* You can add global styles to this file, and also import other style files */
+
+nav.teal{
+    background-color: #157e73;
+}
+footer.teal{
+    background-color: #1f8076;
+}
+h1, h2, h3, h4, h5, h6{
+  color:#157e73;
+}
+
+.form-control:focus {
+  border-color:#1f8076;
+  box-shadow: inset 0 1px 1px rgba(38, 166, 154, 0.075), 0 0 8px rgba(38, 166, 154, 0.6);
+}
+
+.header1{
+    color:#157e73;
+}
+.header2{
+    color:#1f8076;
+}
+.button-background1{
+    background-color: #157e73;
+    color:white;
+}
+.button-background2{
+    background-color: #1f8076;
+    color:white;
+}
+
+
+
+
+.button-style span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button-style span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button-style:hover span {
+  padding-right: 25px;
+}
+
+.button-style:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+  /* Field Styles */
+
+  
+.group        { 
+  position:relative; 
+  margin-bottom:45px; 
+}
+input         {
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:290px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+
+input:focus     { outline:none; }
+
+/* LABEL ======================================= */
+label          {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label    {
+  top:-20px;
+  font-size:14px;
+  color:#157e73;
+}
+
+/* BOTTOM BARS ================================= */
+.bar  { position:relative; display:block; }
+.bar:before, .bar:after   {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#26a69a; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+
+
+/*Table Align Center*/
+th{
+  background-color:#26a69a;
+  color: white;
+}
+tr:nth-child(odd){
+  
+}
+tr:nth-child(even){
+  background-color:#ebfffd;
+}
+
+/* Side Tab Design*/
+.forex-tab {
+  background-color:white;
+  color: #26a69a
+}
+.nav-tabs {
+  border-bottom:none;
+}
+.nav-tabs .nav-link.active {
+  color: #fff;
+  background-color:#26a69a;
+}
+/* Chat Design */
+
+.b_frame{
+
+  border: 1px;
+  width: 400px;
+  height: 420px;
+}

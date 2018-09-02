@@ -1,0 +1,33 @@
+<!-- Check whether tradedOrders Array object had any data to print -->
+<div *ngIf="tradedOrders == null || tradedOrders.length <= 0"><br><br>
+  <h2>
+    &nbsp;&nbsp;Your trade blotter is empty.
+  </h2>
+</div>
+
+<!-- If data exists | Array is !empty -->
+<div *ngIf="tradedOrders != null && tradedOrders.length > 0">
+  <table class="table  text-center">
+    <thead>
+      <tr>
+          <th>ORDER ID</th>
+          <th>TYPE</th>
+          <th>CURRENCY PAIR</th>
+          <th>NOTIONAL AMOUNT</th>
+          <th>ORDERED DATE</th>
+          <th>STATUS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Iterate through tradeOrders Array to get Trade Order details -->
+      <tr  *ngFor="let tradedOrder of tradedOrders" class="">
+        <td>{{tradedOrder.id}}</td>
+        <td>{{tradedOrder.type}}</td>
+        <td>{{tradedOrder.currencyPair.name}}</td>
+        <td>{{tradedOrder.notionalAmount}}</td>
+        <td>{{tradedOrder.orderedDate}}</td>
+        <td>{{tradedOrder.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

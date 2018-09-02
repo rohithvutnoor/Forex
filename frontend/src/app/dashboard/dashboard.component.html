@@ -1,0 +1,95 @@
+<div class="row">
+  <nav class="navbar fixed-top navbar-expand-lg  teal">
+
+    <a class="navbar-brand">
+      <!-- Navbar Icon + Forex Typeface -->
+      <img src="../../assets/images/Forex.png" width="33" height="33" class="d-inline-block align-top" alt="">
+      &nbsp;
+      <img src="../../assets/images/Forex Typeface.png" width="140" height="30" class="d-inline-block align-top" alt="">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav ml-auto">  
+        <li class="nav-item">
+          <a class="nav-link text-white" href="" (click)="signout()">Logout</a>
+        </li>
+      </ul>
+    </div>&nbsp;
+
+    <a class="nav-link text-white" href=""> {{user.firstname | uppercase}} {{user.lastname | uppercase}}</a>
+
+    <a class="navbar-brand">
+      <img style="border-radius: 50%;" src='../../assets/images/defaultUser.svg'width="33" height="33" class="d-inline-block align-top" alt="">
+    </a>
+
+  </nav> 
+</div><br><br><br><br>
+
+<!-- Body Content -->
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-7">
+    <nav>
+
+      <!-- Tab Headers for Customer  -> Visible on role id 2 -->
+      <div *ngIf="user.role.id == 2" class="nav nav-tabs" role="tablist">
+          <a class="forex-tab nav-item  nav-link active" (click)="activeTab='current_prices'" 
+          data-toggle="tab" role="tab" aria-selected="false" href="">Current Prices</a>
+          <a class="forex-tab nav-item  nav-link" (click)="activeTab='order_blotter'" 
+          data-toggle="pill" role="tab" aria-selected="false" href="">Order Blotter</a>
+          <a class="forex-tab nav-item nav-link" (click)="activeTab='trade_blotter'" 
+          data-toggle="pill" role="tab" aria-selected="false" href="">Trade Blotter</a>
+          <a class="forex-tab nav-item nav-link" (click)="activeTab='buy'" 
+          data-toggle="pill" role="tab" aria-selected="false" href="">Buy</a>
+          <a class="forex-tab nav-item nav-link" (click)="activeTab='sell'" 
+          data-toggle="pill" role="tab" aria-selected="false" href="">Sell</a>
+        </div>
+
+        <!-- Tab Headers for Admin -> Visible on role id 1 -->
+        <div *ngIf="user.role.id == 1" class="nav nav-tabs" role="tablist">   
+            <a class="forex-tab nav-item  nav-link active" (click)="activeTab='current_prices'" 
+            data-toggle="tab" role="tab" aria-selected="true" href="">Current Prices</a>  
+            <a class="forex-tab nav-item nav-link " (click)="activeTab='positions'" 
+            data-toggle="pill" role="tab" aria-selected="true" href="">Positions</a>
+            <a class="forex-tab nav-item nav-link" (click)="activeTab='import'" 
+            data-toggle="pill" role="tab" aria-selected="true" href="">Import</a>
+        </div>
+
+    </nav>
+  </div>
+</div>
+<div class="col-4"></div>
+  
+<div class="row">
+  <div class="col-1"></div>
+  <div  class="tab-content col-7" [ngSwitch]="activeTab"><br>
+
+    <!-- Load App Components on Switch Tab-->
+    <app-currency-pair-prices *ngSwitchCase="'current_prices'"></app-currency-pair-prices>
+    <app-orderblotter *ngSwitchCase="'order_blotter'"></app-orderblotter>
+    <app-tradeblotter *ngSwitchCase="'trade_blotter'"></app-tradeblotter>
+    <app-buy *ngSwitchCase="'buy'"></app-buy>
+    <app-sell *ngSwitchCase="'sell'"></app-sell>
+    <app-import *ngSwitchCase="'import'"></app-import>
+    <app-positions *ngSwitchCase="'positions'"></app-positions>
+  </div>
+
+  <!-- Load Chat Bot -->
+  <div class="col-4">
+    <iframe id="frame" class="b_frame" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/4eb1c056-4bcf-4a75-8089-386fd521df36"></iframe>
+  </div>
+
+</div><br><br><br><br>
+
+<!-- Footer -->
+<footer class="page-footer fixed-bottom font-small teal">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3 text-white">
+    <a class="text-white" href="https://github.com/abhijeet1997/ForexNettingSystem"> Forex Netting System</a>
+  </div>
+</footer>
+<!-- End Footer -->

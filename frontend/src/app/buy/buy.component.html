@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <div class="container">
+      <!-- Buy Form -->
+      <form [formGroup]="formGroup"><br>
+        
+        <div class="form-group float-center">
+          <select  class="form-control" formControlName="currency_pair_id" >
+            <option value="" disabled selected hidden><h6>Choose Currency Pair</h6></option>
+            <option text-align: center *ngFor="let currency_pair of currency_pairs" [value]="currency_pair.id">
+              {{currency_pair.name}}
+            </option>
+          </select>
+        </div><br>
+
+        <!-- Notional Amount Field -->
+        <div class="group float-center">
+          <input type="text" placeholder=""formControlName="notional_amount" required class="" aria-describedby="">
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label class="mine"><h6>Notional Amount</h6></label>
+        </div><br>
+        
+        <!-- OnSubmit Call Buy Function -> Sends a POST Request to API -->
+        <button type="button" (click)="buy(); alert('Order Placed');"  [disabled]="isBusy" class="btn button-style button-background2 btn-lg btn-block">
+          <span>
+            <ng-template [ngIf]="!isBusy">Buy</ng-template>
+            <ng-template [ngIf]="isBusy">Order Placed</ng-template>
+          </span> 
+        </button>
+        
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-3"></div>
+</div>

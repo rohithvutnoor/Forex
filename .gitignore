@@ -1,0 +1,8 @@
+node_modules/
+/.metadata/
+backend/.classpath
+backend/.project
+backend/.settings/
+backend/WebContent/WEB-INF/lib/
+backend/build/
+RemoteSystemsTempFiles/

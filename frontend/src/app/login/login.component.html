@@ -1,0 +1,70 @@
+
+
+  <br><br><br><br><br>
+<div class="row">
+  {{response|json}}
+</div>
+
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <div class="container">
+      <form [formGroup]="formGroup" >
+        <div style="text-align:center" class="container">
+            <div class="shadow p-3 mb-5 bg-white rounded">
+              <img src="../../assets/images/defaultUser.svg" width="130"height="130" alt=""><br><br>
+              
+              <!-- Class group associated with Material Input Field Design in Styles.css file -->
+              <div class="group ">
+                <input class=""type="email" placeholder=""formControlName="email"  class="" aria-describedby="">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="mine">Email</label>
+              </div>
+              
+              <div class="alert alert-danger" *ngIf="(formGroup.get('email').invalid && 
+                formGroup.get('email').touched) || showInputErrors">
+                <div *ngIf="formGroup.get('email').hasError('required') ||
+                  formGroup.get('email').hasError('email')"> Please enter your email </div>
+              </div><br>
+
+              <div class="group"> 
+                <input type="password" placeholder="" formControlName="password"  class="" aria-describedby="">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="mine">Password</label>
+              </div>
+
+              <div class="alert alert-danger" *ngIf="(formGroup.get('password').invalid &&
+                formGroup.get('password').touched) || showInputErrors">
+                <div *ngIf="formGroup.get('password').hasError('required')"> Please enter your password </div>
+              </div> <br>
+
+              <button type="button" (click)="login()"  [disabled]="isBusy" class="btn button-style button-background2 btn-lg btn-block">
+              <span><ng-template [ngIf]="!isBusy">Login</ng-template>
+                <ng-template [ngIf]="isBusy">Logging in, please wait...</ng-template></span> 
+              </button>
+
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div><br>
+
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <div *ngIf="hasFailed" class="alert alert-danger">
+      <ul>
+        <!-- Validation Response from Server -->
+        <li *ngFor="let error of errors.error.errors">{{error}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div><br><br><br><br><br><hr>
+
+<!-- Loads Header and Footer Componnent-->
+<app-home></app-home>

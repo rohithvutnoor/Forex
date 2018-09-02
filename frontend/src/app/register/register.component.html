@@ -1,0 +1,88 @@
+<!-- Register Component -->
+<br><br><br><div class="row">
+  {{response|json}}
+</div>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <form [formGroup]="formGroup">
+      <div style="text-align:center" class="container">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+          <img src="../../assets/images/defaultUser.svg" width="130"height="130" alt=""><br><br>
+          <!-- Class group associated with Material Input Field Design in Styles.css file -->
+          <div class="group"> 
+            <input type="text" placeholder="" formControlName="firstname" class="" aria-describedby=""  required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="mine">First Name</label>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="(formGroup.get('firstname').invalid && 
+            formGroup.get('firstname').touched) || showInputErrors">
+            <div *ngIf="formGroup.get('firstname').hasError('required')"> Please enter your first name </div>
+          </div>
+  
+          <div class="group">
+            <input type="text"placeholder="" formControlName="lastname" class="" aria-describedby="" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="mine">Last Name</label>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="(formGroup.get('lastname').invalid && 
+            formGroup.get('lastname').touched) || showInputErrors">
+            <div *ngIf="formGroup.get('lastname').hasError('required')"> Please enter your last name </div>
+          </div>
+
+          <div class="group">
+            <input  type="email"placeholder="" formControlName="email" class="" aria-describedby="" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="mine">Email</label>
+          </div>
+          
+          <div class="alert alert-danger" *ngIf="(formGroup.get('email').invalid && 
+            formGroup.get('email').touched) || showInputErrors">
+            <div class="" *ngIf="formGroup.get('email').hasError('required') ||
+              formGroup.get('email').hasError('email')"> Please enter your email </div>
+          </div>
+
+          <div class="group">
+            <input type="password"placeholder="" formControlName="password" class="" aria-describedby="" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="mine">Password</label>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="(formGroup.get('password').invalid && 
+            formGroup.get('password').touched) || showInputErrors">
+            <div *ngIf="formGroup.get('password').hasError('required')"> Please enter your password </div>
+          </div>
+
+          <button type="button" (click)="register(formGroup.value, formGroup.value, formGroup.value, formGroup.value)" 
+            class="btn button-style button-background2 btn-lg btn-block">
+            <span>Register</span>
+          </button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <div *ngIf="errors != undefined || errors != null" class="alert alert-danger">
+      <ul>
+        <!-- Validation Response from Server -->
+        <li *ngFor="let error of errors.error.errors">{{error}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div><br><br><br><br><br><hr>
+
+<!-- Loads Header and Footer Componnent-->
+<app-home></app-home>

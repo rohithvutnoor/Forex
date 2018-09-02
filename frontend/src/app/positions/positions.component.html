@@ -1,0 +1,76 @@
+<!-- Position Component to provide data of overall Orders -->
+<div>
+ 
+    <form [formGroup]="formGroup" >
+        <div class="row">
+      <div class=" col-3">
+        <select  class="form-group form-control" formControlName="currencyPairId" >
+        <option value="" disabled selected hidden><h6>Choose Currency Pair</h6></option>              
+          <option *ngFor="let currency_pair of currency_pairs" [value]="currency_pair.id">
+            {{currency_pair.name}}
+          </option>
+        </select>
+      </div>
+      <div class="col-5">
+        <input class="" type="date" formControlName="valueDate" max="currentDate">
+      </div>
+      <div class="col-4">
+      <button type="button" (click)="positions()"  [disabled]="isBusy" 
+      class="btn button-style button-background2 btn-lg btn-block">
+        <span><ng-template [ngIf]="!isBusy">Positions</ng-template> 
+        <ng-template [ngIf]="isBusy">Processing positions...</ng-template></span>
+      </button>
+      </div> </div>
+    </form><br><br>
+ 
+  <!-- Summary of Currency Pair Orders -->
+  <div *ngIf="response != undefined && response != null">
+    <div class="row">
+      <div class="col-sm-6 float-center">
+        <div class="row">
+          <div class="col-sm-6 float-center">
+            <h4>Recivable: {{recivable}}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 float-center">
+        <div class="row">
+          <div class="col-sm-6 float-center">
+            <h4>Payable: {{payable}}</h4>
+          </div>
+        </div>
+      </div>
+    </div><br>
+    <div class="row">
+      <div *ngIf="response.orders == null || response.orders.length <= 0">
+        <h2>
+          There are no orders.
+        </h2>
+      </div>
+      <div *ngIf="response.orders != null && response.orders.length > 0">
+        <table class="table text-center">
+          <thead>
+            <tr>
+                <th>ORDER ID</th>
+                <th>TYPE</th>
+                <th>CURRENCY PAIR</th>
+                <th>NOTIONAL AMOUNT</th>
+                <th>ORDERED DATE</th>
+                <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let order of response.orders" class="">
+              <td>{{order.id}}</td>
+              <td>{{order.type}}</td>
+              <td>{{order.currencyPair.name}}</td>
+              <td>{{order.notionalAmount}}</td>
+              <td>{{order.orderedDate}}</td>
+              <td>{{order.status}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+/*
+nav.teal{
+    background-color: #607D8B;
+}
+footer.teal{
+    background-color: #607D8B;
+}
+00838f*/
+.myVideo{
+
+  filter: blur(20px) grayscale(20%);
+}
